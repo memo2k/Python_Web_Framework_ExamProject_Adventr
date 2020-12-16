@@ -1,0 +1,35 @@
+.list-feed {
+    text-align: center;
+    background-color: rgb(230, 240, 240);
+}
+
+.list-feed-h1 {
+    text-align: center;
+}
+
+.list-feed .list-item {
+    width: 100%;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    margin-bottom: 50px;
+}
+
+img {
+    max-width: 100%;
+}
+
+.post-details {
+    padding: 15px;
+}
+
+.post-info {
+    font-size: 1em;
+    font-weight: 300;
+}
+
+.post-description {
+    margin-top: 5px;
+}
+
+.post-buttons {
+    margin: 10px;
+}

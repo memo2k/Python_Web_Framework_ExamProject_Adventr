@@ -1,0 +1,27 @@
+{% extends 'shared/site.html' %}
+{% load static %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{% static 'css/feed.css' %}">
+{% endblock %}
+
+{% block site_content %}
+    <h1 class="list-feed-h1">Feed</h1>
+    <ul class="list-feed">
+        {% for post in posts %}
+            <li class="list-item">
+                <div class="post-details">
+                    <p class="post-info"> <img src="/static/pin.png" alt="image of {{ post.location }}"> {{ post.location }}</p>
+                    <p class="post-description">{{ post.description }}</p>
+                    <div class="post-buttons">
+                        <a class="button" href="{% url 'post details' post.id %}">
+                            Details
+                        </a>
+                    </div>
+                </div>
+                <img src="{{ post.image_url }}" alt="image of {{ post.location }}">
+            </li>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

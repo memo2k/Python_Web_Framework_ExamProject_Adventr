@@ -1,0 +1,19 @@
+.post-image {
+    width: 60%;
+}
+
+.post-info {
+    width: 40%;
+}
+
+.list-post-details {
+    font-weight: 300;
+}
+
+.list-post-details .list-item {
+    margin: 10px;
+}
+
+.post-background {
+    background-color: rgb(230, 240, 240);
+}
