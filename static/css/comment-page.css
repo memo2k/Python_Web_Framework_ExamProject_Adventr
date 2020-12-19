@@ -1,0 +1,39 @@
+.post-image {
+    width: 70%;
+}
+
+.post-info {
+    width: 30%;
+}
+
+.list-post-details {
+    font-weight: 300;
+}
+
+.list-post-details .list-item {
+    margin: 10px;
+}
+
+.post-background {
+    background-color: rgb(230, 240, 240);
+}
+
+img {
+    max-width: 350px;
+}
+
+h1 {
+    text-align: center;
+}
+
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.button:hover {
+    background-color: lightcoral;
+}
