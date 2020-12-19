@@ -1,15 +1,23 @@
+.list-horizontal {
+    display: inline-block;
+}
+
 .list-feed {
     text-align: center;
-    background-color: rgb(230, 240, 240);
 }
 
 .list-feed-h1 {
     text-align: center;
 }
 
+.list-feed-h2 {
+    text-align: left;
+}
+
 .list-feed .list-item {
-    width: 100%;
+    width: 65%;
     border: 1px solid rgba(0, 0, 0, 0.3);
+    background-color: rgb(230, 240, 240);
     margin-bottom: 50px;
 }
 
