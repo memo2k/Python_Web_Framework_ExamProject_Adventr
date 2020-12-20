@@ -11,16 +11,23 @@
         {% for post in posts %}
             <li class="list-item">
                 <div class="post-details">
-                        <p class="post-info"><img src="/static/pin.png"
-                                                  alt="image of {{ post.location }}"> {{ post.location }}</p>
-                    <p class="post-description">{{ post.description }}</p>
+                    <p class="post-info"><img src="/static/pin.png"
+                                              alt="image of {{ post.location }}"> {{ post.location }}</p>
+                    <p class="post-description">{{ post.user.user.username }}: {{ post.description }}</p>
                     <div class="post-buttons">
+                    {% if user.id != post.user.user.id %}
+                        <a href="{% url 'post like' post.pk %}"><img src="/static/heart.png"></a>
+                    {% endif %}
+                        Likes: {{ post.like_set.count }}
                         <a href="{% url 'post comments' post.pk %}" class="button btn btn-primary">Comments</a>
-                        <a href="{% url 'post edit' post.pk %}" class="button btn btn-success">Edit</a>
-                        <a href="{% url 'post delete' post.pk %}" class="button-danger btn btn-danger">Delete</a>
+                        {% if user.id == post.user.user.id %}
+                            <a href="{% url 'post edit' post.pk %}" class="button btn btn-success">Edit</a>
+                            <a href="{% url 'post delete' post.pk %}"
+                               class="button-danger btn btn-danger">Delete</a>
+                        {% endif %}
                     </div>
                 </div>
-                <img src="{{ post.image_url }}" alt="image of {{ post.location }}">
+                <img src="{{ post.image.url }}" alt="image of {{ post.location }}">
             </li>
         {% endfor %}
     </ul>

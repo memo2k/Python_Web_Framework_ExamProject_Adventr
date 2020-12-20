@@ -12,48 +12,6 @@
 {% block site_content %}
 
     <h1>Comments and Details</h1>
-    <div class="post-background">
-        <div class="post-info">
-            <ul class="list-post-details list-horizontal">
-                <li class="list-item">
-                    <img src="/static/pin.png" alt="image of {{ post.location }}"> {{ post.location }}
-                </li>
-            </ul>
-            <p>{{ post.description }}</p>
-            <div class="post-buttons">
-                <a href="{% url 'post like' post.id %}">
-                    <img src="/static/heart.png">
-                </a>
-            </div>
-            Likes: {{ post.like_set.count }}
-        </div>
-        <div class="post-image">
-            <img src="{{ post.image_url }}">
-        </div>
-
-        {#        <br/><br/>#}
-        {#        <hr>#}
-        {#        <h2>Comments</h2>#}
-        {#        <br/><br/>#}
-        {#        <form method="post" action="{% url 'post comments' post.pk %}">#}
-        {#            {% crispy form %}#}
-        {#            {% csrf_token %}#}
-        {#            <button class="btn btn-primary mt-2" type="submit">Add Comment</button>#}
-        {#            <a href="{% url 'post comments' post.pk %}" class="btn btn-primary mt-2">Add comment</a>#}
-        {#        </form>#}
-        {#        <br/><br/>#}
-        {#        {% if not post.comment_set.all %}#}
-        {#            <h3>No comments yet...</h3>#}
-        {##}
-        {#        {% else %}#}
-        {##}
-        {#            {% for comment in post.comment_set.all %}#}
-        {#                <p>{{ comment.text }}</p>#}
-        {#                <br/>#}
-        {##}
-        {#            {% endfor %}#}
-        {#        {% endif %}#}
-
         <div class="d-block" style="background-color: rgb(230, 240, 240); padding:2%">
             <div class="box">
                 <form method="post">

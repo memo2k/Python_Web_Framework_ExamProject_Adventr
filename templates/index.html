@@ -12,16 +12,16 @@
     Adventr
 {% endblock %}
 {% block site_content %}
-<section>
-    <h1 class="list-item">SHARE YOUR BEST MOMENTS WITH FRIENDS</h1>
-    <div>
+    <section class="index-center">
+        <h1 class="list-item">SHARE YOUR BEST MOMENTS WITH FRIENDS</h1>
         <div>
-            <button>Sign up</button>
+            <div>
+                <a href="{% url 'signup profile' %}" class="button btn btn-primary" type="submit">Sign up</a>
+            </div>
+            <div>
+                Already have an account?
+                <a href="{% url 'login' %}" style="color:lightcoral">Sign in</a>
+            </div>
         </div>
-        <div>
-            Already have an account?
-            <button>Sign in</button>
-        </div>
-    </div>
-</section>
+    </section>
 {% endblock %}

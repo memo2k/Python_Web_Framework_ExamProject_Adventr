@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, redirect
 
 from posts.forms.comment_form import CommentForm
@@ -6,6 +7,7 @@ from posts.forms.post_edit_form import EditForm
 from posts.models import Post, Like, Comment
 
 
+@login_required()
 def feed(request):
     context = {
         'posts': Post.objects.all(),
@@ -14,14 +16,20 @@ def feed(request):
     return render(request, 'posts/feed.html', context)
 
 
+@login_required()
 def post_likes(request, pk):
-    post = Post.objects.get(pk=pk)
-    like = Like()
-    like.post = post
-    like.save()
-    return redirect('post comments', pk)
+    like = Like.objects.filter(user_id=request.user.userprofile.id, post_id=pk).first()
+    if like:
+        like.delete()
+    else:
+        post = Post.objects.get(pk=pk)
+        like = Like(user=request.user.userprofile)
+        like.post = post
+        like.save()
+    return redirect('feed')
 
 
+@login_required()
 def post_comments(request, pk):
     post = Post.objects.get(pk=pk)
     if request.method == "GET":
@@ -47,6 +55,7 @@ def post_comments(request, pk):
         return render(request, 'posts/comment-page.html', context)
 
 
+@login_required
 def add_photo(request):
     post = Post()
     if request.method == 'GET':
@@ -59,7 +68,7 @@ def add_photo(request):
         return render(request, 'posts/add-photo.html', context)
 
     else:
-        form = AddForm(request.POST)
+        form = AddForm(request.POST, request.FILES, instance=post)
         if form.is_valid():
             form.save()
             return redirect('feed')
@@ -71,6 +80,7 @@ def add_photo(request):
         return render(request, 'posts/add-photo.html', context)
 
 
+@login_required()
 def post_edit(request, pk):
     post = Post.objects.get(pk=pk)
     if request.method == 'GET':
@@ -97,8 +107,10 @@ def post_edit(request, pk):
         return render(request, 'posts/post-edit.html', context)
 
 
+@login_required()
 def post_delete(request, pk):
     post = Post.objects.get(pk=pk)
+    img = post.image
     if request.method == "GET":
         context = {
             'post': post
@@ -106,5 +118,6 @@ def post_delete(request, pk):
 
         return render(request, 'posts/post-delete.html', context)
     else:
+        img.delete()
         post.delete()
         return redirect('feed')

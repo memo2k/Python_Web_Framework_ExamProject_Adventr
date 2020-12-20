@@ -1,0 +1,29 @@
+{% extends 'shared/site.html' %}
+{% block site_content %}
+    <div class="text-center">
+        <h1>Hello, {{ profile_user.username }}!</h1>
+    </div>
+    {% if posts %}
+    <h2 class='text-center'>Posts</h2>
+    <div class="row">
+        <div class="row">
+            {% for post in posts %}
+            <div class="col-lg-4">
+                <div class="card" style="width: 18rem;">
+                    <img src="{{ post.image.url }}" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <a href="{% url 'post comments' post.pk %}" class="btn btn-primary">Comments</a>
+                        Likes: {{ post.like_set.count }}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+    {% else %}
+    <div class="text-center">
+        <h2>No posts yet.</h2>
+        <a href="{% url 'add photo' %}" class="button btn">Add a photo</a>
+    </div>
+    {% endif %}
+{% endblock %}

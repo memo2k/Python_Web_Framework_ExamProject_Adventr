@@ -1233,11 +1233,13 @@ UC/10
     </table>
     <table id="68" parent="18" name="posts_like">
       <ObjectId>16567</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>548</StateNumber>
     </table>
     <table id="69" parent="18" name="posts_post">
       <ObjectId>16556</ObjectId>
+      <Outdated>1</Outdated>
       <Owner>postgres</Owner>
       <StateNumber>548</StateNumber>
     </table>

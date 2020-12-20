@@ -16,16 +16,29 @@
                     Add photo
                 </a>
             </li>
-            <li class="list-item">
-                <a href="#">
-                    Sign in
-                </a>
-            </li>
-            <li class="list-item">
-                <a href="#">
-                    Sign up
-                </a>
-            </li>
+            {% if user.is_authenticated %}
+                <li class="list-item">
+                    <a href="{% url 'user profile' user.id %}">
+                        {{ user.username }}
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="{% url 'signout user'%}">
+                        Sign out
+                    </a>
+                </li>
+            {% else %}
+                <li class="list-item">
+                    <a href="{% url 'login' %}">
+                        Sign in
+                    </a>
+                </li>
+                <li class="list-item">
+                    <a href="{% url 'signup profile' %}">
+                        Sign up
+                    </a>
+                </li>
+            {% endif %}
         </ul>
     </nav>
 </header>

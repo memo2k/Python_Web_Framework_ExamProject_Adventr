@@ -27,4 +27,5 @@ ul li, ol li {
 
 h1 {
     color: lightcoral;
+    outline-color: black;
 }
